@@ -24,26 +24,59 @@ function App() {
       <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-black-500 bg-gray-800 ">
         <h1 className="text-white text-center my-3">Password Generator</h1>
         <div className="flex shadow rounded-lg overflow-hidden mb-4 bg-white">
-          <input type="text" value={password}
-          className="outline-none w-full py-1 px-3"
-          placeholder="password"
-          readOnly />
-          <button className="outline-none bg-blue-700  py-0.5 shrink-0 px-3">copy</button>
-
+          <input
+            type="text"
+            value={password}
+            className="outline-none w-full py-1 px-3"
+            placeholder="password"
+            readOnly
+          />
+          <button className="outline-none bg-blue-700  py-0.5 shrink-0 px-3">
+            copy
+          </button>
         </div>
         <div className="flex text-sm gap-x-2">
           <div className="flex items-center gap-x-1">
-            <input type="range"
-            min={6}
-            max={100}
-            value={length}
-            className="cursor-pointer text-white"
-             />
-             <label className="text-white"> length : {length}</label>
+            <input
+              type="range"
+              min={6}
+              max={100}
+              value={length}
+              className="cursor-pointer text-white"
+              onChange={(e) => {
+                setLength(e.target.value);
+              }}
+            />
+            <label className="text-white"> length : {length}</label>
           </div>
-
+          <div className="flex items-center gap-x-1">
+            <input
+              type="checkbox"
+              defaultChecked={numberAllowed}
+              id="nuberInpt"
+              onChange={() => {
+                seNumberAllowed((prev) => !prev);
+              }}
+            />
+            <label htmlFor="numberInput" className="text-white">
+              Numbers
+            </label>
+          </div>
+          <div className="flex items-center gap-x-1">
+            <input
+              type="checkbox"
+              defaultChecked={charAllowed}
+              id="character input"
+              onChange={() => {
+                setCharAllowed((prev) => !prev);
+              }}
+            />
+            <label htmlFor="characterInput" className="text-white">
+              Characters
+            </label>
+          </div>
         </div>
-        </div>
+      </div>
     </>
   );
 }
